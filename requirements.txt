@@ -1,0 +1,54 @@
+# ==============================
+# API / Backend
+# ==============================
+fastapi
+uvicorn[standard]
+
+# ==============================
+# Configuration / Validation
+# ==============================
+pydantic
+pydantic-settings
+python-dotenv
+email-validator
+
+# ==============================
+# LangChain / LangGraph
+# ==============================
+langchain
+langchain-core
+langchain-openai
+langgraph
+
+# ==============================
+# Retrieval / Embeddings
+# ==============================
+faiss-cpu
+sentence-transformers
+
+# ==============================
+# Database
+# ==============================
+sqlalchemy
+
+# ==============================
+# HTTP / Reliability
+# ==============================
+httpx
+tenacity
+
+# ==============================
+# Frontend
+# ==============================
+streamlit
+
+# ==============================
+# Testing
+# ==============================
+pytest
+pytest-asyncio
+
+# ==============================
+# Code Quality
+# ==============================
+ruff

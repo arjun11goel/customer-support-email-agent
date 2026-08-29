@@ -1,0 +1,20 @@
+[
+  {
+    "sender": "john@example.com",
+    "recipient": "support@example.com",
+    "subject": "I was charged twice",
+    "body": "I was charged twice for my subscription."
+  },
+  {
+    "sender": "sarah@example.com",
+    "recipient": "support@example.com",
+    "subject": "Application is crashing",
+    "body": "The application crashes when I upload a CSV file."
+  },
+  {
+    "sender": "alex@example.com",
+    "recipient": "support@example.com",
+    "subject": "API access",
+    "body": "Does the product support API access?"
+  }
+]

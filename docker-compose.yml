@@ -1,0 +1,37 @@
+services:
+
+  backend:
+    build: .
+    container_name: supportflow-backend
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - .env
+
+    volumes:
+      - ./data:/app/data
+
+  ui:
+    build: .
+    container_name: supportflow-ui
+
+    command:
+      - streamlit
+      - run
+      - ui/Home.py
+      - --server.address=0.0.0.0
+      - --server.port=8501
+
+    ports:
+      - "8501:8501"
+
+    env_file:
+      - .env
+
+    environment:
+      BACKEND_URL: http://backend:8000
+
+    depends_on:
+      - backend
