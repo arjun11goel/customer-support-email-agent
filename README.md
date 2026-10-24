@@ -1,8 +1,8 @@
 # SupportFlow AI
 
-**AI-assisted customer support email triage with retrieval-grounded reply drafts, safety checks, human review, and simulated auto-send.**
+**AI-assisted customer support email agent for triage and response handling, with retrieval-grounded reply drafts, safety checks, human review, and simulated auto-send.**
 
-SupportFlow AI is a portfolio demo of a customer support email workflow. It uses synthetic email cases to demonstrate how an AI agent can classify a request, retrieve relevant knowledge, prepare a response, validate it, and decide whether it should wait for human review or qualify for a simulated send.
+SupportFlow AI processes customer support requests through an end-to-end workflow. It classifies intent, retrieves relevant guidance from a FAISS knowledge base, drafts and validates a reply, then routes sensitive or uncertain cases for human review. Eligible responses can be recorded as simulated sends.
 
 > **Demo only:** The inbox contains synthetic data. Gmail and Outlook are not connected, and no real email is sent. A `sent_demo` response is recorded in the application database.
 
