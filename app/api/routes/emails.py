@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.api.dependencies import get_database
+from app.core.exceptions import EmailNotFoundException
 from app.schemas.email import EmailResponse, MockEmailCreate
 from app.services.email_service import EmailService
 
@@ -16,9 +17,8 @@ def create_mock_email(
     data: MockEmailCreate,
     db: Session = Depends(get_database),
 ):
-    service = EmailService(db)
-
-    return service.create_mock_email(data)
+    """Create a demo email in the inbox."""
+    return EmailService(db).create_mock_email(data)
 
 
 @router.get(
@@ -28,9 +28,8 @@ def create_mock_email(
 def list_emails(
     db: Session = Depends(get_database),
 ):
-    service = EmailService(db)
-
-    return service.list_emails()
+    """List emails, newest first."""
+    return EmailService(db).list_emails()
 
 
 @router.get(
@@ -41,6 +40,11 @@ def get_email(
     email_id: str,
     db: Session = Depends(get_database),
 ):
-    service = EmailService(db)
-
-    return service.get_email(email_id)
+    """Get one email by ID."""
+    try:
+        return EmailService(db).get_email(email_id)
+    except EmailNotFoundException as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=exc.message,
+        ) from exc

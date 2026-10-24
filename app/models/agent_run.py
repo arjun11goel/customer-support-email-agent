@@ -1,14 +1,14 @@
 from datetime import datetime, timezone
 from uuid import uuid4
 
-from sqlalchemy import DateTime, Float, ForeignKey, String, Text
+from sqlalchemy import Boolean, DateTime, Float, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database.connection import Base
 
 
 class AgentRun(Base):
-    """Stores an execution of the AI agent."""
+    """Store the result of one agent workflow execution."""
 
     __tablename__ = "agent_runs"
 
@@ -44,9 +44,41 @@ class AgentRun(Base):
         nullable=True,
     )
 
+    grounding_score: Mapped[float | None] = mapped_column(
+        Float,
+        nullable=True,
+    )
+
+    validation_passed: Mapped[bool | None] = mapped_column(
+        Boolean,
+        nullable=True,
+    )
+
+    validation_issues: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
+
+    review_required: Mapped[bool] = mapped_column(
+        Boolean,
+        default=True,
+        nullable=False,
+    )
+
     escalation_required: Mapped[bool] = mapped_column(
+        Boolean,
         default=False,
         nullable=False,
+    )
+
+    escalation_reasons: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
+
+    error: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
     )
 
     status: Mapped[str] = mapped_column(

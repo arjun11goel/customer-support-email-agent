@@ -12,10 +12,7 @@ class EmailService:
     def __init__(self, db: Session):
         self.repository = EmailRepository(db)
 
-    def create_mock_email(
-        self,
-        data: MockEmailCreate,
-    ) -> Email:
+    def create_mock_email(self, data: MockEmailCreate) -> Email:
         email = Email(
             sender=str(data.sender),
             recipient=str(data.recipient),
@@ -24,7 +21,6 @@ class EmailService:
             source="mock",
             status="new",
         )
-
         return self.repository.create(email)
 
     def get_email(self, email_id: str) -> Email:
@@ -37,3 +33,8 @@ class EmailService:
 
     def list_emails(self) -> list[Email]:
         return self.repository.list_all()
+
+    def update_status(self, email_id: str, status: str) -> Email:
+        """Update an email's inbox status."""
+        email = self.get_email(email_id)
+        return self.repository.update_status(email, status)

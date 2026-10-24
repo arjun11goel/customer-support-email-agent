@@ -1,0 +1,32 @@
+# Git files
+.git
+.gitignore
+
+# Python environments and cache
+.venv
+venv
+env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Local database and generated evaluation output
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+data/evaluation_results.json
+
+# Rebuilt from the Markdown knowledge base when the backend starts
+data/vector_store/
+
+# Editor files and logs
+.vscode/
+.idea/
+*.log

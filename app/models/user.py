@@ -1,16 +1,16 @@
 from datetime import datetime, timezone
 from uuid import uuid4
 
-from sqlalchemy import DateTime, ForeignKey, String
+from sqlalchemy import Boolean, DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database.connection import Base
 
 
-class FollowUp(Base):
-    """Stores future follow-up requirements."""
+class User(Base):
+    """User account for the SupportFlow demo workspace."""
 
-    __tablename__ = "follow_ups"
+    __tablename__ = "users"
 
     id: Mapped[str] = mapped_column(
         String(36),
@@ -18,25 +18,32 @@ class FollowUp(Base):
         default=lambda: str(uuid4()),
     )
 
-    email_id: Mapped[str] = mapped_column(
-        String(36),
-        ForeignKey("emails.id"),
+    email: Mapped[str] = mapped_column(
+        String(320),
+        unique=True,
+        index=True,
         nullable=False,
     )
 
-    scheduled_for: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True),
+    password_hash: Mapped[str] = mapped_column(
+        String(255),
         nullable=False,
     )
 
-    reason: Mapped[str] = mapped_column(
-        String(500),
+    company_name: Mapped[str] = mapped_column(
+        String(255),
         nullable=False,
     )
 
-    status: Mapped[str] = mapped_column(
+    role: Mapped[str] = mapped_column(
         String(50),
-        default="scheduled",
+        default="support_admin",
+        nullable=False,
+    )
+
+    is_active: Mapped[bool] = mapped_column(
+        Boolean,
+        default=True,
         nullable=False,
     )
 

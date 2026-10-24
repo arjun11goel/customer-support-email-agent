@@ -3,6 +3,7 @@ from enum import Enum
 
 class EmailSource(str, Enum):
     MOCK = "mock"
+    DEMO_SEED = "demo_seed"
     GMAIL = "gmail"
     OUTLOOK = "outlook"
 

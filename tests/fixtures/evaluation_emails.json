@@ -1,0 +1,164 @@
+[
+  {
+    "id": "eval-01",
+    "sender": "eval01@example.com",
+    "recipient": "support@example.com",
+    "subject": "Which features are included in my plan?",
+    "body": "Can you tell me which product features are included in my subscription plan?",
+    "expected_intent": "product_question",
+    "expected_source": "products.md"
+  },
+  {
+    "id": "eval-02",
+    "sender": "eval02@example.com",
+    "recipient": "support@example.com",
+    "subject": "Manage my subscription",
+    "body": "Where in my account can I manage my subscription?",
+    "expected_intent": "product_question",
+    "expected_source": "subscriptions.md"
+  },
+  {
+    "id": "eval-03",
+    "sender": "eval03@example.com",
+    "recipient": "support@example.com",
+    "subject": "Subscription options and pricing",
+    "body": "Where can I check the subscription options and pricing for my selected plan?",
+    "expected_intent": "product_question",
+    "expected_source": "subscriptions.md"
+  },
+  {
+    "id": "eval-04",
+    "sender": "eval04@example.com",
+    "recipient": "support@example.com",
+    "subject": "CSV upload crashes the application",
+    "body": "The application crashes every time I upload a CSV file.",
+    "expected_intent": "bug_report",
+    "expected_source": null
+  },
+  {
+    "id": "eval-05",
+    "sender": "eval05@example.com",
+    "recipient": "support@example.com",
+    "subject": "Dashboard does not load",
+    "body": "My dashboard stays blank and never finishes loading.",
+    "expected_intent": "bug_report",
+    "expected_source": null
+  },
+  {
+    "id": "eval-06",
+    "sender": "eval06@example.com",
+    "recipient": "support@example.com",
+    "subject": "Error when saving profile",
+    "body": "I get an error whenever I try to save changes to my profile.",
+    "expected_intent": "bug_report",
+    "expected_source": null
+  },
+  {
+    "id": "eval-07",
+    "sender": "eval07@example.com",
+    "recipient": "support@example.com",
+    "subject": "Charged twice for my subscription",
+    "body": "I believe I was charged twice for the same subscription. Please review my billing record.",
+    "expected_intent": "billing_issue",
+    "expected_source": "billing.md"
+  },
+  {
+    "id": "eval-08",
+    "sender": "eval08@example.com",
+    "recipient": "support@example.com",
+    "subject": "Requesting a refund",
+    "body": "I would like to request a refund for my recent transaction.",
+    "expected_intent": "billing_issue",
+    "expected_source": "refunds.md"
+  },
+  {
+    "id": "eval-09",
+    "sender": "eval09@example.com",
+    "recipient": "support@example.com",
+    "subject": "Question about my subscription charge",
+    "body": "Please explain the charge for the subscription plan I selected during checkout.",
+    "expected_intent": "billing_issue",
+    "expected_source": "billing.md"
+  },
+  {
+    "id": "eval-10",
+    "sender": "eval10@example.com",
+    "recipient": "support@example.com",
+    "subject": "Request for offline mode",
+    "body": "Could you add an offline mode so I can use the product without an internet connection?",
+    "expected_intent": "feature_request",
+    "expected_source": "products.md"
+  },
+  {
+    "id": "eval-11",
+    "sender": "eval11@example.com",
+    "recipient": "support@example.com",
+    "subject": "Request for a new integration",
+    "body": "Please add an integration with another service that is not currently listed in my plan.",
+    "expected_intent": "feature_request",
+    "expected_source": "products.md"
+  },
+  {
+    "id": "eval-12",
+    "sender": "eval12@example.com",
+    "recipient": "support@example.com",
+    "subject": "Feature suggestion",
+    "body": "I would like to suggest a new reporting feature for the product.",
+    "expected_intent": "feature_request",
+    "expected_source": "products.md"
+  },
+  {
+    "id": "eval-13",
+    "sender": "eval13@example.com",
+    "recipient": "support@example.com",
+    "subject": "Suspicious activity on my account",
+    "body": "I noticed suspicious activity and am concerned someone else may have accessed my account.",
+    "expected_intent": "complex_issue",
+    "expected_source": "accounts.md"
+  },
+  {
+    "id": "eval-14",
+    "sender": "eval14@example.com",
+    "recipient": "support@example.com",
+    "subject": "Account ownership problem",
+    "body": "I cannot verify ownership of my account and need help recovering access.",
+    "expected_intent": "complex_issue",
+    "expected_source": "accounts.md"
+  },
+  {
+    "id": "eval-15",
+    "sender": "eval15@example.com",
+    "recipient": "support@example.com",
+    "subject": "Locked out after suspicious login",
+    "body": "My account was locked after a login I do not recognize. Please investigate the account security issue.",
+    "expected_intent": "complex_issue",
+    "expected_source": "accounts.md"
+  },
+  {
+    "id": "eval-16",
+    "sender": "eval16@example.com",
+    "recipient": "support@example.com",
+    "subject": "Weekend weather",
+    "body": "Do you think it will rain in Delhi this weekend?",
+    "expected_intent": "other",
+    "expected_source": null
+  },
+  {
+    "id": "eval-17",
+    "sender": "eval17@example.com",
+    "recipient": "support@example.com",
+    "subject": "Job application",
+    "body": "I am looking for a job. Can you tell me where to send my resume?",
+    "expected_intent": "other",
+    "expected_source": null
+  },
+  {
+    "id": "eval-18",
+    "sender": "eval18@example.com",
+    "recipient": "support@example.com",
+    "subject": "Thank you",
+    "body": "I just wanted to say thank you for your help.",
+    "expected_intent": "other",
+    "expected_source": null
+  }
+]

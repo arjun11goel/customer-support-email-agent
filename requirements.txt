@@ -1,54 +1,39 @@
-# ==============================
-# API / Backend
-# ==============================
+# FastAPI backend
 fastapi
 uvicorn[standard]
 
-# ==============================
-# Configuration / Validation
-# ==============================
+# Settings and validation
 pydantic
 pydantic-settings
 python-dotenv
 email-validator
 
-# ==============================
-# LangChain / LangGraph
-# ==============================
-langchain
+# LangGraph workflow and OpenAI-compatible Gemini client
 langchain-core
 langchain-openai
 langgraph
 
-# ==============================
-# Retrieval / Embeddings
-# ==============================
+# Lightweight vector retrieval
 faiss-cpu
-sentence-transformers
+scikit-learn
+numpy
 
-# ==============================
 # Database
-# ==============================
 sqlalchemy
 
-# ==============================
-# HTTP / Reliability
-# ==============================
+# HTTP
 httpx
+requests
 tenacity
 
-# ==============================
-# Frontend
-# ==============================
+# Demo login: secure password hashing and signed access tokens
+pwdlib[argon2]
+PyJWT
+
+# Streamlit frontend
 streamlit
 
-# ==============================
-# Testing
-# ==============================
+# Evaluation and code quality
 pytest
 pytest-asyncio
-
-# ==============================
-# Code Quality
-# ==============================
 ruff

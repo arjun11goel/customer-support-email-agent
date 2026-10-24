@@ -1,15 +1,58 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.api.dependencies import get_database
 from app.schemas.response import (
     ApproveResponseRequest,
     ResponseResponse,
-    SendResponseRequest,
+    UpdateResponseRequest,
 )
 from app.services.response_service import ResponseService
 
+
 router = APIRouter()
+
+
+@router.get(
+    "/responses/{response_id}",
+    response_model=ResponseResponse,
+)
+def get_response(
+    response_id: str,
+    db: Session = Depends(get_database),
+):
+    """Get a saved response and its current review status."""
+    response = ResponseService(db).get_by_id(response_id)
+
+    if not response:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Response '{response_id}' was not found.",
+        )
+
+    return response
+
+
+@router.put(
+    "/responses/{response_id}",
+    response_model=ResponseResponse,
+)
+def update_response(
+    response_id: str,
+    data: UpdateResponseRequest,
+    db: Session = Depends(get_database),
+):
+    """Save an edited response draft."""
+    try:
+        return ResponseService(db).update_draft(
+            response_id=response_id,
+            content=data.content,
+        )
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc),
+        ) from exc
 
 
 @router.post(
@@ -21,12 +64,17 @@ def approve_response(
     data: ApproveResponseRequest,
     db: Session = Depends(get_database),
 ):
-    service = ResponseService(db)
-
-    return service.approve(
-        response_id=response_id,
-        approved_by=data.approved_by,
-    )
+    """Approve a response draft for the demo workflow."""
+    try:
+        return ResponseService(db).approve(
+            response_id=response_id,
+            approved_by=data.approved_by,
+        )
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc),
+        ) from exc
 
 
 @router.post(
@@ -35,10 +83,13 @@ def approve_response(
 )
 def send_response(
     response_id: str,
-    data: SendResponseRequest,
     db: Session = Depends(get_database),
 ):
-    service = ResponseService(db)
-
-    # Real email provider integration will be added later.
-    return service.send(response_id)
+    """Mark an approved response as sent in the demo database."""
+    try:
+        return ResponseService(db).send(response_id)
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc),
+        ) from exc

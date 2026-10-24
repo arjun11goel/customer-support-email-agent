@@ -1,21 +1,33 @@
 import streamlit as st
 
 
-def show_status(status: str):
-    status = status.lower()
+def show_status(status: str) -> None:
+    """Display a status using a matching Streamlit color."""
+    normalized_status = (status or "unknown").lower()
 
-    if status in {"sent", "approved", "processed"}:
-        st.success(status.upper())
+    if normalized_status in {
+        "sent",
+        "sent_demo",
+        "approved",
+        "processed",
+    }:
+        st.success(normalized_status.upper())
 
-    elif status in {
+    elif normalized_status in {
         "needs_review",
         "awaiting_review",
         "escalated",
     }:
-        st.warning(status.upper())
+        st.warning(normalized_status.upper())
 
-    elif status in {"failed", "error"}:
-        st.error(status.upper())
+    elif normalized_status in {
+        "failed",
+        "error",
+        "classification_failed",
+        "retrieval_failed",
+        "generation_failed",
+    }:
+        st.error(normalized_status.upper())
 
     else:
-        st.info(status.upper())
+        st.info(normalized_status.upper())

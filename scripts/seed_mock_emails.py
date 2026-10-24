@@ -1,5 +1,5 @@
-from app.database.init_db import initialize_database
 from app.database.connection import SessionLocal
+from app.database.init_db import initialize_database
 from app.schemas.email import MockEmailCreate
 from app.services.email_service import EmailService
 
@@ -34,23 +34,35 @@ MOCK_EMAILS = [
 ]
 
 
-def main():
+def main() -> None:
+    """Create sample emails without adding duplicates."""
     initialize_database()
-
     db = SessionLocal()
 
     try:
         service = EmailService(db)
+        existing_pairs = {
+            (email.sender.lower(), email.subject.lower())
+            for email in service.list_emails()
+        }
+
+        created_count = 0
 
         for item in MOCK_EMAILS:
+            pair = (item["sender"].lower(), item["subject"].lower())
+
+            if pair in existing_pairs:
+                continue
+
             email = service.create_mock_email(
                 MockEmailCreate(**item)
             )
+            existing_pairs.add(pair)
+            created_count += 1
+            print(f"Created email: {email.id} | {email.subject}")
 
-            print(
-                f"Created email: "
-                f"{email.id} | {email.subject}"
-            )
+        print(f"Added {created_count} new sample emails.")
+
     finally:
         db.close()
 

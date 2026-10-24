@@ -29,9 +29,24 @@ class Settings(BaseSettings):
 
     AGENT_CONFIDENCE_THRESHOLD: float = 0.85
 
+    # Keep real sending disabled. This project uses simulated sending.
     AUTO_SEND_ENABLED: bool = False
 
+    # Auto-send is a simulated demo action, not a real email.
+    AUTO_SEND_CONFIDENCE_THRESHOLD: float = 0.90
+    AUTO_SEND_MIN_RETRIEVAL_SCORE: float = 0.10
+
     BACKEND_URL: str = "http://127.0.0.1:8000"
+
+    # Demo login settings.
+    # Set these in your local .env file and deployment secrets.
+    JWT_SECRET_KEY: str = ""
+    JWT_ALGORITHM: str = "HS256"
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 480
+
+    DEMO_ADMIN_EMAIL: str = "demo@supportflow.ai"
+    DEMO_ADMIN_PASSWORD: str = ""
+    DEMO_COMPANY_NAME: str = "Acme Demo Support"
 
     model_config = SettingsConfigDict(
         env_file=".env",
