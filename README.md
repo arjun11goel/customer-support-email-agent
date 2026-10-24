@@ -1,10 +1,29 @@
 # SupportFlow AI
 
+<p align="left">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12" /></a>
+  <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI" /></a>
+  <a href="https://streamlit.io/"><img src="https://img.shields.io/badge/UI-Streamlit-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit" /></a>
+  <a href="https://www.langchain.com/langgraph"><img src="https://img.shields.io/badge/Workflow-LangGraph-1C3C3C?logo=langchain&logoColor=white" alt="LangGraph" /></a>
+  <a href="https://www.langchain.com/"><img src="https://img.shields.io/badge/Framework-LangChain-1C3C3C?logo=langchain&logoColor=white" alt="LangChain" /></a>
+  <a href="https://ai.google.dev/gemini-api"><img src="https://img.shields.io/badge/LLM-Google%20Gemini-8E75B2" alt="Google Gemini" /></a>
+  <a href="https://github.com/facebookresearch/faiss"><img src="https://img.shields.io/badge/Vector%20Search-FAISS-0467DF" alt="FAISS" /></a>
+  <a href="https://scikit-learn.org/"><img src="https://img.shields.io/badge/Text%20Vectors-scikit--learn%20HashingVectorizer-F7931E?logo=scikitlearn&logoColor=white" alt="scikit-learn HashingVectorizer" /></a>
+  <a href="https://numpy.org/"><img src="https://img.shields.io/badge/Arrays-NumPy-013243?logo=numpy&logoColor=white" alt="NumPy" /></a>
+  <a href="https://www.sqlalchemy.org/"><img src="https://img.shields.io/badge/ORM-SQLAlchemy-D71F00" alt="SQLAlchemy" /></a>
+  <a href="https://www.sqlite.org/"><img src="https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite" /></a>
+  <a href="https://docs.pytest.org/"><img src="https://img.shields.io/badge/Testing-Pytest-0A9EDC?logo=pytest&logoColor=white" alt="Pytest" /></a>
+  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Container-Docker-2496ED?logo=docker&logoColor=white" alt="Docker" /></a>
+  <a href="https://render.com/"><img src="https://img.shields.io/badge/API%20Hosting-Render-000000?logo=render&logoColor=white" alt="Render" /></a>
+</p>
+
 **AI-assisted customer support email agent for triage and response handling, with retrieval-grounded reply drafts, safety checks, human review, and simulated auto-send.**
 
 SupportFlow AI processes customer support requests through an end-to-end workflow. It classifies intent, retrieves relevant guidance from a FAISS knowledge base, drafts and validates a reply, then routes sensitive or uncertain cases for human review. Eligible responses can be recorded as simulated sends.
 
-> **Demo only:** The inbox contains synthetic data. Gmail and Outlook are not connected, and no real email is sent. A `sent_demo` response is recorded in the application database.
+> The inbox contains synthetic data. Gmail and Outlook are not connected, and no real email is sent. A `sent_demo` response is recorded in the application database.
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://customer-support-email-agent.streamlit.app/)
 
 ### Home Dashboard
 
@@ -360,3 +379,17 @@ Possible future work:
 ## Project impact
 
 SupportFlow AI demonstrates an end-to-end, safety-oriented support workflow: straightforward product questions can qualify for a simulated automated response, while uncertain or risky cases remain visible for human review. On the current 18-example evaluation set, the workflow achieved **94.44% intent accuracy** and retrieved the expected source for **12/12 labeled retrieval cases**. These are project evaluation results, not claims of measured business savings or real email automation.
+
+## Author
+
+**Arjun Goel**
+
+MCA'27@VIT Vellore
+
+- **Email:** [arjun11goel@gmail.com](mailto:arjun11goel@gmail.com)
+- **LinkedIn:** [linkedin.com/in/arjun11goel](https://www.linkedin.com/in/arjun11goel/)
+- **Porfolio:** [arjun11goel.vercel.app](https://arjun11goel.vercel.app)
+
+---
+
+*Built as a Generative AI customer support email agent project exploring LangGraph workflow orchestration, Gemini-powered intent classification and reply drafting, FAISS retrieval with scikit-learn HashingVectorizer, response validation, human review, simulated auto-send, and agent evaluation.*
